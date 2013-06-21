@@ -1,17 +1,18 @@
-%define		_modname	scream
-%define		_status		alpha
+%define		php_name	php%{?php_suffix}
+%define		modname		scream
+%define		status		alpha
 Summary:	break the silence operator
 Summary(pl.UTF-8):	przełamanie operatora wyciszania
-Name:		php-pecl-%{_modname}
+Name:		%{php_name}-pecl-%{modname}
 Version:	0.1.0
 Release:	5
 License:	PHP 3.01
 Group:		Development/Languages/PHP
-Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
+Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
 # Source0-md5:	ec606b6b9f23bd7de532c7f77c953852
 URL:		http://pecl.php.net/package/scream/
-BuildRequires:	php-devel >= 3:5.0.0
-BuildRequires:	rpmbuild(macros) >= 1.344
+BuildRequires:	%{php_name}-devel >= 3:5.0.0
+BuildRequires:	rpmbuild(macros) >= 1.650
 %{?requires_php_extension}
 Requires:	php(core) >= 5.0.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -20,17 +21,17 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Allows you to disable the silence operator (@) to get all error
 messages.
 
-In PECL status of this extension is: %{_status}.
+In PECL status of this extension is: %{status}.
 
 %description -l pl.UTF-8
 Rozszerzenie to pozwala na wyłączenie operatora wyciszania (@) w celu
 uzyskania pełnych komunikatów błędu.
 
-To rozszerzenie ma w PECL status: %{_status}.
+To rozszerzenie ma w PECL status: %{status}.
 
 %prep
 %setup -q -c
-mv %{_modname}-%{version}/* .
+mv %{modname}-%{version}/* .
 
 %build
 phpize
@@ -44,9 +45,9 @@ install -d $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d
 %{__make} install \
 	INSTALL_ROOT=$RPM_BUILD_ROOT \
 	EXTENSION_DIR=%{php_extensiondir}
-cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{_modname}.ini
-; Enable %{_modname} extension module
-extension=%{_modname}.so
+cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{modname}.ini
+; Enable %{modname} extension module
+extension=%{modname}.so
 EOF
 
 %clean
@@ -62,5 +63,5 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) %{php_sysconfdir}/conf.d/%{_modname}.ini
-%attr(755,root,root) %{php_extensiondir}/%{_modname}.so
+%config(noreplace) %verify(not md5 mtime size) %{php_sysconfdir}/conf.d/%{modname}.ini
+%attr(755,root,root) %{php_extensiondir}/%{modname}.so

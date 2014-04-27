@@ -5,7 +5,7 @@ Summary:	break the silence operator
 Summary(pl.UTF-8):	przełamanie operatora wyciszania
 Name:		%{php_name}-pecl-%{modname}
 Version:	0.1.0
-Release:	6
+Release:	7
 License:	PHP 3.01
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz

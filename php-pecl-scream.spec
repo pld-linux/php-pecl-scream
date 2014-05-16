@@ -5,17 +5,17 @@ Summary:	break the silence operator
 Summary(pl.UTF-8):	przełamanie operatora wyciszania
 Name:		%{php_name}-pecl-%{modname}
 Version:	0.1.0
-Release:	7
+Release:	8
 License:	PHP 3.01
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
 # Source0-md5:	ec606b6b9f23bd7de532c7f77c953852
 URL:		http://pecl.php.net/package/scream/
-BuildRequires:	%{php_name}-devel >= 3:5.0.0
+BuildRequires:	%{php_name}-devel >= 3:5.0.4
 BuildRequires:	rpmbuild(macros) >= 1.650
 %{?requires_php_extension}
-Requires:	php(core) >= 5.0.4
 Provides:	php(%{modname}) = %{version}
+Obsoletes:	php-pecl-scream < 0.1.0-7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

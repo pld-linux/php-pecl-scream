@@ -10,6 +10,7 @@ License:	PHP 3.01
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
 # Source0-md5:	ec606b6b9f23bd7de532c7f77c953852
+Source1:	%{modname}.ini
 URL:		http://pecl.php.net/package/scream/
 BuildRequires:	%{php_name}-devel >= 3:5.0.4
 BuildRequires:	rpmbuild(macros) >= 1.650
@@ -31,7 +32,7 @@ uzyskania pełnych komunikatów błędu.
 To rozszerzenie ma w PECL status: %{status}.
 
 %prep
-%setup -q -c
+%setup -qc
 mv %{modname}-%{version}/* .
 
 %build
@@ -41,15 +42,12 @@ phpize
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d
-
 %{__make} install \
 	INSTALL_ROOT=$RPM_BUILD_ROOT \
 	EXTENSION_DIR=%{php_extensiondir}
-cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{modname}.ini
-; Enable %{modname} extension module
-extension=%{modname}.so
-EOF
+
+install -d $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d
+cp -p %{SOURCE1} $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{modname}.ini
 
 %clean
 rm -rf $RPM_BUILD_ROOT

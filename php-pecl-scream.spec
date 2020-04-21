@@ -8,10 +8,10 @@ Version:	0.1.0
 Release:	9
 License:	PHP 3.01
 Group:		Development/Languages/PHP
-Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
+Source0:	https://pecl.php.net/get/%{modname}-%{version}.tgz
 # Source0-md5:	ec606b6b9f23bd7de532c7f77c953852
 Source1:	%{modname}.ini
-URL:		http://pecl.php.net/package/scream/
+URL:		https://pecl.php.net/package/scream/
 BuildRequires:	%{php_name}-devel >= 3:5.0.4
 BuildRequires:	rpmbuild(macros) >= 1.650
 %{?requires_php_extension}
